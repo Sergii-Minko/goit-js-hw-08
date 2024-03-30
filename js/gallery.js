@@ -86,11 +86,10 @@ const galleryItemsEl = images.map(imageData => {
 galleryEl.innerHTML = galleryItemsEl.join('');
 
 const onGalleryItemClick = event => {
-  event.preventDefault();
-
   if (event.target.nodeName !== 'IMG') {
     return;
   }
+  event.preventDefault();
 
   const url = event.target.dataset.source;
 
@@ -100,7 +99,10 @@ const onGalleryItemClick = event => {
     },
   };
 
-  instance = basicLightbox.create(`<img src="${url}">`, basicLightboxOptions);
+  instance = basicLightbox.create(
+    `<img src="${url}" style="max-width: 1112px; max-height: 640px;">`,
+    basicLightboxOptions
+  );
 
   instance.show();
 
